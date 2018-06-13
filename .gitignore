@@ -1,3 +1,8 @@
 /.idea/
 npm-debug.log
 ui-app/node_modules
+test.db
+connect.js
+app/node_modules
+app/npm-debug.log
+app/test.db
