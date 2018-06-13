@@ -1,0 +1,61 @@
+.reg-form-wrapper {
+
+}
+
+.reg-form-header {
+    text-align: center;
+}
+
+.reg-form-content {
+    display: flex;
+    flex-flow: column;
+    width: 70%;
+    margin: 10px auto;
+}
+
+.form-control {
+    display: flex;
+    flex-flow: column;
+    width: 60%;
+    margin: 10px auto;
+}
+
+.input-field {
+    padding: 15px;
+    font-size: 14px;
+    outline: none;
+    margin: 10px 0;
+}
+
+.reg-button:disabled {
+    cursor: default;
+}
+
+.reg-button {
+    height: 50px;
+    font-size: 14px;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.link-login {
+    text-decoration: none;
+    color: black;
+}
+
+.result-success {
+    color: green;
+    font-size: 14px;
+}
+
+.result-failure {
+    color: red;
+    font-size: 14px;
+}
+
+/*input:-webkit-autofill {*/
+/*background-color: rgb(255, 255, 255) !important;*/
+/*outline-offset: 0 !important;*/
+/*!*border: 2px solid rgb(238, 238, 238);*!*/
+/*}*/

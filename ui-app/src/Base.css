@@ -1,0 +1,28 @@
+.Base {
+  text-align: center;
+}
+
+.Base-logo {
+  animation: Base-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.Base-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.Base-title {
+  font-size: 1.5em;
+}
+
+.Base-intro {
+  font-size: large;
+}
+
+@keyframes Base-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
