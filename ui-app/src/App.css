@@ -1,0 +1,115 @@
+html, body {
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+.main-menu {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
+
+.main-menu-item {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+.main-menu-item {
+    border-right: 1px solid #cccccc60;
+}
+
+.main-menu-item:first-child,
+.main-menu-item:last-child {
+    border: none;
+}
+
+.main-menu-item a {
+    text-decoration: none;
+    list-style-type: none;
+    margin: 0 auto;
+    color: #000;
+    font-weight: bold;
+}
+
+.home-icon a {
+    background-color: #d2303b;
+    color: #fdfdfb;
+    font-size: 23px;
+    font-family: 'Rouge Script', cursive;
+    text-shadow: 1px 1px 2px #082b34;
+}
+
+.home-icon a {
+    /*margin: 0 auto;*/
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+}
+
+.search-holder {
+    flex: 3;
+    padding: 0 25px;
+}
+
+.search-input {
+    padding: 10px;
+    /*color: #000;*/
+    border: none;
+    outline: none;
+    font-size: 16px;
+    /*min-width: 240px;*/
+    min-width: 100%;
+    height: 100%;
+}
+
+.search-input::placeholder {
+    color: #000;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+.search-input:focus::placeholder {
+    /*color: #000;*/
+    /*color: initial;*/
+    /*color: #ccc;*/
+    color: #082b3490;
+}
+
+.search-icon {
+    width: 20px;
+    /*position: absolute;*/
+    /*z-index: 1;*/
+}
+
+.item-link-dropdown {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #d2303b;
+    margin-left: 5px;
+}
+
+.partial-menu {
+    width: 100%;
+    height: 100%;
+    /*background-color: white;*/
+    /*height: auto;*/
+    position: absolute;
+    top: 80px;
+}
+
+.logo {
+    /*width: 100px;*/
+}
