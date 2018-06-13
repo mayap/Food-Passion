@@ -8,12 +8,16 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const database = require('./config/dbconfig');
 const bcrypt = require('bcrypt');
+const cors = require('cors');
 
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/user');
 const recipeRouter = require('./routes/recipe');
+const usersRouter = require('./routes/users');
+const recipesRouter = require('./routes/recipes');
 
 const app = express();
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -47,6 +51,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 
 app.use('/login', function (req, res, next) {
+  console.log('req: ', req.body.email);
   const email = req.body.email;
   const password = req.body.password;
 
@@ -103,6 +108,8 @@ app.use('/login', function (req, res, next) {
 });
 
 app.use('/user', userRouter);
+app.use('/users', usersRouter);
+app.use('/recipes', recipesRouter);
 app.use('/recipe', sessionChecker, recipeRouter);
 
 app.use('/logout', function (req, res) {
