@@ -1,5 +1,27 @@
 .recipe-menu {
+    position: absolute;
+    top: 80px;
+    width: 100%;
+    height: 100%;
     background-color: #071926;
-    width: inherit;
-    height: inherit;
+    color: #fff;
+}
+
+.sections-content {
+    width: 90%;
+    display: flex;
+    height: auto;
+    flex-wrap: wrap;
+    margin: 20px auto 40px;
+}
+
+.section {
+    flex: 0 0 20%;
+    margin: 0 20px;
+    text-align: left;
+}
+
+.section-items {
+    display: flex;
+    flex-flow: column;
 }

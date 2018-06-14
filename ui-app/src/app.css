@@ -46,7 +46,6 @@ html, body {
 }
 
 .home-icon a {
-    /*margin: 0 auto;*/
     width: 100%;
     height: 80px;
     line-height: 80px;
@@ -59,11 +58,9 @@ html, body {
 
 .search-input {
     padding: 10px;
-    /*color: #000;*/
     border: none;
     outline: none;
     font-size: 16px;
-    /*min-width: 240px;*/
     min-width: 100%;
     height: 100%;
 }
@@ -74,16 +71,11 @@ html, body {
 }
 
 .search-input:focus::placeholder {
-    /*color: #000;*/
-    /*color: initial;*/
-    /*color: #ccc;*/
     color: #082b3490;
 }
 
 .search-icon {
     width: 20px;
-    /*position: absolute;*/
-    /*z-index: 1;*/
 }
 
 .item-link-dropdown {
@@ -101,15 +93,43 @@ html, body {
     margin-left: 5px;
 }
 
+.active-button {
+    background-color: #0d2437;
+}
+
+.active-link {
+    color: #fff !important;
+}
+
 .partial-menu {
-    width: 100%;
-    height: 100%;
-    /*background-color: white;*/
-    /*height: auto;*/
+
+}
+
+.fade {
+    opacity: 1;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 0.5s;
+}
+
+@keyframes fadeInOpacity {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.footer {
     position: absolute;
-    top: 80px;
+    bottom: 0;
 }
 
 .logo {
-    /*width: 100px;*/
+
 }

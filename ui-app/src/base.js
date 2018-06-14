@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './Base.css';
+import './base.css';
 
 class Base extends Component {
   render() {
     return (
-      <div className="Base">
+      <div className="base">
         {/*<header className="Base-header">*/}
           {/*<img src={logo} className="Base-logo" alt="logo" />*/}
           {/*<h1 className="Base-title">Welcome to React</h1>*/}

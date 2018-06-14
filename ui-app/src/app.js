@@ -3,13 +3,13 @@ import { PropTypes } from 'prop-types';
 import { Route, Link , withRouter} from 'react-router-dom';
 
 import searchIcon from './images/search-icon.svg';
-import Base from './Base';
+import Base from './base';
 import Login from './components/login';
 import Register from './components/register';
 import RecipeMenu from './components/recipeMenu';
 
 import './index.css';
-import './App.css';
+import './app.css';
 
 @withRouter
 class App extends Component {
@@ -24,8 +24,9 @@ class App extends Component {
   }
 
   onRouteChanged() {
+    this.partialMenu = '';
     this.setState({
-      showPartialMenu: true
+      showPartialMenu: false
     });
   }
 
@@ -34,12 +35,14 @@ class App extends Component {
 
     this.nameInput = React.createRef();
     this.focusInputField = this.focusInputField.bind(this);
-    this.partialMenu = this.partialMenu =
-      <div className="partial-menu">
-        <RecipeMenu />
-      </div>;
+    // this.partialMenu = this.partialMenu =
+    //   <div className="partial-menu">
+    //     <RecipeMenu />
+    //   </div>;
+    this.partialMenu = '';
     this.state = {
-      showPartialMenu: false
+      showPartialMenu: false,
+      fade: false
     };
 
     this.toggleMenu = this.toggleMenu.bind(this);
@@ -61,8 +64,9 @@ class App extends Component {
     const currentState = !this.state.showPartialMenu;
 
     if (currentState) {
+      this.setState({fade: true});
       this.partialMenu =
-        <div className="partial-menu">
+        <div className={"partial-menu " + (this.state.fade ? 'fade' : '')}>
           <RecipeMenu />
         </div>
     } else {
@@ -71,6 +75,8 @@ class App extends Component {
   }
 
   render() {
+    const {fade} = this.state;
+
     return (
       <div className="container">
         {this.partialMenu}
@@ -82,8 +88,10 @@ class App extends Component {
             <img src={searchIcon} alt="search-icon" className="search-icon" onClick={this.focusInputField} />
             <input type="search" className="search-input" ref={(input) => { this.nameInput = input; }}  placeholder="What do you want to cook?" />
           </div>
-          <div className="main-menu-item">
-            <a className="item-link-dropdown" onClick={this.toggleMenu}>
+          <div className={"main-menu-item " +  (this.state.showPartialMenu ? 'active-button' : '')}>
+            <a className={"item-link-dropdown " + (this.state.showPartialMenu ? 'active-link' : '')}
+               onClick={this.toggleMenu}
+               onAnimationEnd={() => this.setState({fade: false})}>
               Recipes
               <span className="arrow-down"></span>
             </a>

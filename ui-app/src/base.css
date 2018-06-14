@@ -1,28 +1,29 @@
-.Base {
+.base {
   text-align: center;
+  /*background-color: ;*/
 }
 
-.Base-logo {
-  animation: Base-logo-spin infinite 20s linear;
+.base-logo {
+  animation: base-logo-spin infinite 20s linear;
   height: 80px;
 }
 
-.Base-header {
+.base-header {
   background-color: #222;
   height: 150px;
   padding: 20px;
   color: white;
 }
 
-.Base-title {
+.base-title {
   font-size: 1.5em;
 }
 
-.Base-intro {
+.base-intro {
   font-size: large;
 }
 
-@keyframes Base-logo-spin {
+@keyframes base-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
