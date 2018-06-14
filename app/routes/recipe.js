@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const database = require('../config/dbconfig');
+const events = require('events').EventEmitter;
 
 router.post('/', function(req, res) {
   const recipeName = req.body.recipeName;
@@ -11,13 +12,16 @@ router.post('/', function(req, res) {
   const isActive = 1;
   const ingredients = req.body.ingredients;
   const preparationSteps = req.body.preparationSteps;
+  let categories = req.body.categories;
+
+  console.log(req.body);
 
   if (!recipeName) {
     res.status(400).send('Please send recipe name');
 
     return;
   }
-  //check for number ????
+
   if (!preparationTime) {
     res.status(400).send('Please send preparation time for the recipe');
 
@@ -29,13 +33,13 @@ router.post('/', function(req, res) {
 
     return;
   }
-  //check for number ????
+
   if (!calories) {
     res.status(400).send('Please send calories for the recipe');
 
     return;
   }
-//  || typeof isPublic !== 'boolean'
+
   if (!isPublic) {
     res.status(400).send('Please send correct value for public recipe');
 
@@ -53,28 +57,40 @@ router.post('/', function(req, res) {
     return;
   }
 
+  if (!categories) {
+    res.status(400).send('Please send the categories for the recipe');
+    return;
+  }
+
   let sqlInsertRecipe = `INSERT INTO Recipe 
                       (recipe_name, preparation_time, image, calories, is_public, 
-                        is_active, ingredients, preparation_steps) 
+                        is_active, ingredients, preparation_steps, categories) 
                         VALUES
-                        (?, ?, ?, ?, ?, ?, ?, ?) `;
+                        (?, ?, ?, ?, ?, ?, ?, ?, ?) `;
 
   let sqlInsertUserRecipe = `INSERT INTO User_Recipe 
                       (user_id, recipe_id) 
                         VALUES
                         (?, ?) `;
 
+  let sqlInsertCategoryRecipe = `INSERT INTO Category_Recipe
+                      (category_id, recipe_id) 
+                        VALUES
+                        (?, ?) `;
+
+  let addedRecipeId = '';
+
   database.serialize(function() {
     database.run("BEGIN");
 
     database.run(sqlInsertRecipe, [recipeName, preparationTime, image, calories,
-                                  isPublic, isActive, ingredients, preparationSteps], function(err) {
+      isPublic, isActive, ingredients, preparationSteps, categories], function(err) {
 
       if (err) {
         res.end("Transaction cancelled");
       } else {
         const userId = req.session.user.id;
-        const addedRecipeId = this.lastID;
+        addedRecipeId = this.lastID;
 
         database.run(sqlInsertUserRecipe, [userId, addedRecipeId], function(err) {
           if (err) {
@@ -84,9 +100,23 @@ router.post('/', function(req, res) {
           } else {
             database.run('commit');
 
+            categories = JSON.parse(categories);
+
+            categories.forEach(categoryId => {
+              console.log(categoryId);
+              database.run(sqlInsertCategoryRecipe, [categoryId, addedRecipeId], function(err) {
+                if (err) {
+                  res.status(500).send('Something went wrong');
+
+                  return;
+                }
+
+              });
+            });
+
             res.end("Transaction succeed");
           }
-        });
+        })
       }
     });
   });
@@ -139,7 +169,7 @@ router.put('/:recipeId', function(req, res) {
 
     return;
   }
-  //check for number ????
+
   if (!preparationTime) {
     res.status(400).send('Please send preparation time for the recipe');
 
@@ -151,13 +181,13 @@ router.put('/:recipeId', function(req, res) {
 
     return;
   }
-  //check for number ????
+
   if (!calories) {
     res.status(400).send('Please send calories for the recipe');
 
     return;
   }
-//  || typeof isPublic !== 'boolean'
+
   if (!isPublic) {
     res.status(400).send('Please send correct value for public recipe');
 
@@ -201,7 +231,7 @@ router.put('/:recipeId', function(req, res) {
       res.status(400).send('There is no such recipe');
     } else {
       database.run(updateSql, [recipeName, preparationTime, image, calories,
-        isPublic, isActive, ingredients, preparationSteps, recipeId], (err) => {
+        isPublic, isActive, ingredients, preparationSteps, categories, recipeId], (err) => {
 
         if (err) {
           res.status(500).send('Something went wrong');
