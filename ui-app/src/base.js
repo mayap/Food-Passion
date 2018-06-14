@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import homepageImg from './images/homepage.jpg';
 import './base.css';
 
 class Base extends Component {
   render() {
     return (
       <div className="base">
+        <img src={homepageImg} alt=""/>
+        <h1>Test</h1>
         {/*<header className="Base-header">*/}
           {/*<img src={logo} className="Base-logo" alt="logo" />*/}
           {/*<h1 className="Base-title">Welcome to React</h1>*/}

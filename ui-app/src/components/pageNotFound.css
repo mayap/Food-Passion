@@ -1,0 +1,103 @@
+.pagenotfound-wrapper {
+    position: relative;
+    height: 100%;
+    background: #1b1b1b url('../images/bg.jpg');
+}
+
+.hide {
+    position: unset;
+}
+
+.hide-img {
+    visibility: hidden;
+}
+
+.pagenotfound-header {
+    color: #fff;   
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.btn {
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border: 2px solid #fff;
+    padding: 6px 20px;
+    transition: all .3s ease;
+    -webkit-border-radius: 32px;
+    -webkit-background-clip: padding-box;
+    -moz-border-radius: 32px;
+    -moz-background-clip: padding;
+    border-radius: 32px;
+    background-clip: padding-box;
+}
+
+.main-header,
+.sub-header {
+    margin: 0;
+    line-height: 1em;
+}
+
+.main-header {
+    font-weight: 700;
+    font-size: 200px;
+    margin: 0 0 25px;
+    font-family: 'Merienda One', cursive;
+}
+
+.sub-header {
+    font-weight: 600;
+    color: #B42208;
+    font-family: 'Merienda One', cursive;
+    font-size: 48px;
+    text-transform: none;
+}
+
+.info-text{
+    font-size: 18px;
+    margin: 40px 0 70px 0;
+    font-weight: 200;
+    line-height: 1.3em;
+}
+
+#content-404 {
+    text-align: center;
+    font-weight: 500;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.footer-btn {
+    padding-bottom: 50px;
+}
+
+.all-fade {
+    transition: all .3s ease;
+}
+
+.info-text,
+.btn,
+.btn:visited {
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+}
+
+.btn:hover {
+    background: #B42208;
+    border-color: #B42208;
+    color: #fff;
+}
+
+#content-404 {
+    padding: 26px 0 0 0;
+    max-width: 560px;
+}
+#img-left {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+}

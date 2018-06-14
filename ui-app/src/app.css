@@ -2,6 +2,10 @@ html, body {
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
 
+.container {
+    height: 100%;
+}
+
 .main-menu {
     height: 80px;
     display: flex;
