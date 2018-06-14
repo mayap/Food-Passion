@@ -16,14 +16,14 @@ router.post('/', function(req, res) {
     return;
   }
 
-  if (!firstName || firstName.length < 5) {
-    res.status(400).send('Please enter firstName with at least 5 characters!');
+  if (!firstName) {
+    res.status(400).send('Please enter first name!');
 
     return;
   }
 
-  if (!lastName || lastName.length < 5) {
-    res.status(400).send('Please enter lastName with at least 5 characters!');
+  if (!lastName) {
+    res.status(400).send('Please enter last name!');
 
     return;
   }
@@ -79,10 +79,6 @@ router.post('/', function(req, res) {
 });
 
 router.get('/:userId', function(req, res) {
-  // send data to DB - check if such user exists
-  // hash password
-  // return status codes for fail/success
-  // return user object (without the password)
   const userId = parseInt(req.params.userId);
 
   if (userId <= 0) {
@@ -113,9 +109,6 @@ router.get('/:userId', function(req, res) {
 });
 
 router.put('/:userId', function(req, res) {
-  // hash password
-  // return status codes for fail/success
-  // return user object (without the password)
   const userId = parseInt(req.params.userId);
 
   const email = req.body.email;
