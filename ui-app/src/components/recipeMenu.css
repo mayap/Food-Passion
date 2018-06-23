@@ -5,6 +5,7 @@
     height: 100%;
     background-color: #071926;
     color: #fff;
+    z-index: 1;
 }
 
 .sections-content {
@@ -17,11 +18,31 @@
 
 .section {
     flex: 0 0 20%;
-    margin: 0 20px;
+    margin: 10px 20px;
     text-align: left;
+}
+
+.separation-line {
+    height: 5px;
+    border-top: 1px solid #607689;
+    border-bottom: 1px solid #4d5f6f;
+    margin: 18px 0;
 }
 
 .section-items {
     display: flex;
     flex-flow: column;
+}
+
+.children {
+    color: #b7ccdd;
+    text-decoration: none;
+    text-shadow: 1px 1px 1px #4d5f6f;
+    letter-spacing: 0.5px;
+    font-size: 18px;
+    margin: 5px;
+}
+
+.children:hover {
+    text-decoration: underline;
 }

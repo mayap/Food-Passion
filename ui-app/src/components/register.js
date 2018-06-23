@@ -122,9 +122,12 @@ class Register extends Component {
     let partialContent;
 
     if (this.state.result.state) {
-      partialContent = <button className="login-button">
-                        <Link className="link-login" to="/login">Go to Login page</Link>
-                      </button>
+      partialContent =
+        <Link className="link-login" to="/login">
+          <button className="login-button">
+            Go to Login page
+          </button>
+        </Link>
     } else {
       partialContent = <form onSubmit={this.handleSubmit}>
           <div className="form-control">
@@ -185,60 +188,6 @@ class Register extends Component {
         {partialContent}
       </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      // <div className="">
-      //   <div className="">
-      //     <h1 className="">Register</h1>
-      //   </div>
-      //   <form onSubmit={this.handleSubmit}>
-      //     <label htmlFor="firstName">First name:</label>
-      //     <input id="firstName"
-      //            type="text"
-      //            value={this.state.firstName}
-      //            onChange={this.handleChange}
-      //            placeholder="Enter your first name" />
-      //     <label htmlFor="lastName">Last name:</label>
-      //     <input id="lastName"
-      //            type="text"
-      //            value={this.state.lastName}
-      //            onChange={this.handleChange}
-      //            placeholder="Enter your last name" />
-      //
-      //     <label htmlFor="email">E-mail:</label>
-      //     <input id="email"
-      //            type="email"
-      //            value={this.state.email}
-      //            onChange={this.handleChange}
-      //            placeholder="Enter your e-mail address" />
-      //     {/*<span>TODO For API errors</span>*/}
-      //     <label htmlFor="password">Password:</label>
-      //     <input id="password"
-      //            type="password"
-      //            value={this.state.password}
-      //            onChange={this.handleChange}
-      //            placeholder="Enter your password" />
-      //     <button
-      //       disabled={!this.validateForm()}
-      //       type="submit">
-      //       Register
-      //     </button>
-      //   </form>
-      // </div>
     );
   }
 }

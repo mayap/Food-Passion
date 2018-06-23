@@ -1,38 +1,37 @@
 import React, { Component } from 'react';
-import './base.css';
+import './categories.css';
 import axios from 'axios';
-import foodImg from './images/tacos.jpg';
+import foodImg from '../images/burger.jpg';
 
-class Base extends Component {
+class Categories extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
-
-    this.getAllRecipes = this.getAllRecipes.bind(this);
-
-    this.getAllRecipes().then(res => {
-      debugger;
+    this.getRecipesFromCategory = this.getRecipesFromCategory.bind(this);
+    this.getRecipesFromCategory(props.categoryId).then(res => {
       this.setState({
-        recipes: JSON.parse(res.data.rows)
+        recipes: res.data
       });
     }, err => {
-      debugger;
       this.setState({
         error: err.response.data
       });
     });
-  }
 
-  getAllRecipes() {
-    let url = `http://localhost:3200/recipes`;
+    this.state = {
+      categoryId: props.categoryId
+    };
+  };
+
+  getRecipesFromCategory(categoryId) {
+    let url = `http://localhost:3200/category/${categoryId}/recipes`;
 
     return axios.get(url);
   }
 
   render() {
     return (
-      <div className="base">
+      <div className="categories-wrapper">
         {this.state.recipes &&
           this.state.recipes.map(recipe =>
             <div key={recipe.id} className="single-recipe-wrapper">
@@ -57,6 +56,7 @@ class Base extends Component {
       </div>
     );
   }
+
 }
 
-export default Base;
+export default Categories;

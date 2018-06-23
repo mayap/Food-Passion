@@ -54,7 +54,6 @@ class Login extends Component {
       password: this.state.password
     };
 
-    debugger;
     // axios.post(`http://localhost:3200/login`, user)
     //   .then(res => {
     //     debugger;
@@ -113,9 +112,11 @@ class Login extends Component {
         </div>
         <div className="login-form-register-part">
           <p>You do not have an account?</p>
-          <button className="reg-login-button full-width">
-            <Link className="link-login" to="/register">Register now</Link>
-          </button>
+          <Link to="/register">
+            <button className="reg-login-button full-width">
+              Register now
+            </button>
+          </Link>
         </div>
       </div>
     );
