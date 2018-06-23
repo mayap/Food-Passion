@@ -16,6 +16,7 @@ const recipeRouter = require('./routes/recipe');
 const usersRouter = require('./routes/users');
 const recipesRouter = require('./routes/recipes');
 const categoriesRouter = require('./routes/categories');
+const categoryRecipesRouter = require('./routes/categoryRecipes');
 
 const app = express();
 app.use(cors());
@@ -112,6 +113,7 @@ app.use('/user', userRouter);
 app.use('/users', usersRouter);
 app.use('/recipes', recipesRouter);
 app.use('/categories', categoriesRouter);
+app.use('/category', categoryRecipesRouter);
 app.use('/recipe', sessionChecker, recipeRouter);
 
 app.use('/logout', function (req, res) {

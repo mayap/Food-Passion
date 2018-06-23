@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const database = require('../config/dbconfig');
-const events = require('events').EventEmitter;
 
 router.post('/', function(req, res) {
   const recipeName = req.body.recipeName;
