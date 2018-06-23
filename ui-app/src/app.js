@@ -31,13 +31,10 @@ class App extends Component {
       // fade: false,
     };
     this.renderView = [];
+    this.renderRecipes = [];
 
     this.toggleMenu = this.toggleMenu.bind(this);
   }
-
-  static propTypes = {
-    location: PropTypes.object.isRequired
-  };
 
   componentDidMount() {
     const url = 'http://localhost:3200/categories';
@@ -67,7 +64,14 @@ class App extends Component {
         children = [];
         for (let j = 0; j < childrenCategories.length; j++) {
           if (childrenCategories[j].parent_id === parentCategories[i].id) {
-            children.push(<Link to={`/category/${childrenCategories[j].category_name}`} className='children' key={childrenCategories[j].id}>{childrenCategories[j].category_name}</Link>);
+            children.push(
+              <Link
+                to={`/category/${childrenCategories[j].id}`}
+                className='children'
+                key={childrenCategories[j].id}>
+                {childrenCategories[j].category_name}
+              </Link>
+            );
           }
         }
 
@@ -96,10 +100,6 @@ class App extends Component {
       showPartialMenu: false
     });
   }
-
-  static contextTypes = {
-    router: PropTypes.object
-  };
 
   focusInputField() {
     this.nameInput.focus();
@@ -152,18 +152,34 @@ class App extends Component {
             <Link to="/login">Login</Link>
           </div>
         </div>
-        <Switch>
-          <Route exact path="/" component={Base} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <Route path="/category" component={Categories} />
-          <Route render={() => <PageNotFound partialMenuShown={this.state.showPartialMenu} />} />
-        </Switch>
+        <div className="main-wrapper">
+          <Switch>
+            <Route exact path="/" component={Base} />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+            <Route path="/category/:id" render={(props) => {
+              return (<Categories key={props.match.params.id} categoryId={props.match.params.id} />);
+            }} />
+            <Route render={() => <PageNotFound partialMenuShown={this.state.showPartialMenu} />} />
+          </Switch>
+        </div>
+
         <div className="footer">
-          <div className="footer-icon">
-            Food Passion
+          <div className="subscription-form">
+            <div className="subscription-info">
+              <h2>The recipes you love - always on time</h2>
+              <p>Get new, tasty and healthy recipes delivered to you regularly</p>
+            </div>
+            <div>
+              <input type="email" className="subscription-input" placeholder="Your Email Address" />
+              <button className="subscription-btn">Sign Up</button>
+            </div>
           </div>
-          <div className="footer-menu">
+          <div className="footer-content">
+            <div className="footer-logo">Food Passion</div>
+            <div className="info">
+              About Us
+            </div>
           </div>
         </div>
       </div>

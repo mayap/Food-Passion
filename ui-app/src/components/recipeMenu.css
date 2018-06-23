@@ -35,21 +35,12 @@
 }
 
 .children {
-    /*color: #fff;*/
-    /*color: #acc3d5;*/
     color: #b7ccdd;
-    /*color: #aec4d6;*/
-    /*color: #607689;*/
-    /*color: #4d5f6f;*/
     text-decoration: none;
-    /*text-shadow: 1px 1px #4d5f6f;*/
     text-shadow: 1px 1px 1px #4d5f6f;
-    /*font-style: italic;*/
     letter-spacing: 0.5px;
     font-size: 18px;
     margin: 5px;
-    /*text-shadow: 1px 1px #607689;*/
-    /*text-shadow: 1px 1px 1px #607689;*/
 }
 
 .children:hover {
