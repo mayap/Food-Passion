@@ -34,6 +34,12 @@
   padding: 10px 20px;
 }
 
+.single-recipe-content h3 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .calories,
 .preparation-time {
   display: flex;
