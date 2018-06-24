@@ -5,7 +5,6 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
 const bodyParser = require('body-parser');
-const morgan = require('morgan');
 const database = require('./config/dbconfig');
 const bcrypt = require('bcrypt');
 
@@ -28,7 +27,6 @@ app.use(function(req, res, next) {
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 
-app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(session({
