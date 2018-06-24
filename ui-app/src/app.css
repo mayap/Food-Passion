@@ -6,9 +6,8 @@ html, body {
 }
 
 .container {
-    min-height:100%;
-    position:relative;
-    /*background-color: #0d2437;*/
+    min-height: 100%;
+    position: relative;
     background-color: #f3f1f2;
 }
 
@@ -19,7 +18,12 @@ html, body {
     /*-o-background-size: cover;*/
     /*background-size: cover;*/
 
-    margin-bottom: 60px;
+    padding-bottom: 207px;
+}
+
+.full {
+    padding-bottom: 0;
+    height: 100vh;
 }
 
 .main-menu {
@@ -64,9 +68,6 @@ html, body {
     font-size: 23px;
     font-family: 'Rouge Script', cursive;
     text-shadow: 1px 1px 2px #082b34;
-}
-
-.home-icon a {
     width: 100%;
     height: 80px;
     line-height: 80px;
@@ -146,10 +147,14 @@ html, body {
     }
 }
 
+.hide-footer {
+    display: none;
+}
+
 .footer {
     position: absolute;
     bottom: 0;
-    height: 60px;
+    height: 207px;
     width: 100%;
 }
 
@@ -159,6 +164,7 @@ html, body {
     justify-content: space-around;
     align-items: center;
     padding: 20px 0;
+    height: 130px;
 }
 
 .subscription-info {
@@ -204,12 +210,37 @@ html, body {
 .footer-content {
     background-color: black;
     color: white;
+
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 20px 60px;
+    height: 77px;
 }
 
-.footer-logo {
-    background-color: #d2303b;
-    color: #fdfdfb;
+.footer-logo a {
+    color: #d2303b;
     font-size: 23px;
     font-family: 'Rouge Script', cursive;
     text-shadow: 1px 1px 2px #082b34;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.info {
+    color: #959595;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.info:hover {
+    text-decoration: underline;
+}
+
+.show {
+    display: flex;
+}
+
+.hide {
+    display: none;
 }

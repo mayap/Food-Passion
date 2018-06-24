@@ -26,7 +26,7 @@ class Categories extends Component {
   getRecipesFromCategory(categoryId) {
     let url = `http://localhost:3200/category/${categoryId}/recipes`;
 
-    return axios.get(url);
+    return axios.get(url, {withCredentials: true});
   }
 
   render() {
@@ -56,7 +56,6 @@ class Categories extends Component {
       </div>
     );
   }
-
 }
 
 export default Categories;

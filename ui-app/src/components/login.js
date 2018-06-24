@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './login.css';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 class Login extends Component {
   constructor(props) {
@@ -11,7 +10,8 @@ class Login extends Component {
       email: "",
       password: "",
       emailError: "",
-      passwordError: ""
+      passwordError: "",
+      missingUser: ""
     };
   };
 
@@ -54,22 +54,38 @@ class Login extends Component {
       password: this.state.password
     };
 
-    // axios.post(`http://localhost:3200/login`, user)
-    //   .then(res => {
-    //     debugger;
-    //     // const persons = res.data;
-    //     // this.setState({ persons });
-    //   })
+    let formBody = [];
+    for (let property in user) {
+      let encodedKey = encodeURIComponent(property);
+      let encodedValue = encodeURIComponent(user[property]);
+      formBody.push(encodedKey + "=" + encodedValue);
+    }
+    formBody = formBody.join("&");
 
-    // fetch(`http://localhost:3200/login`, {
-    //   method: 'post',
-    //   headers: {
-    //     "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-    //   },
-    //   body: user
-    // }).then(res => {
-    //   debugger;
-    // })
+    fetch(`http://localhost:3200/login`, {
+      method: 'POST',
+        headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      credentials: 'include',
+      body: formBody
+    }).then(res => {
+      if (res.status === 400) {
+        this.setState({
+          missingUser: 'No such user found!'
+        })
+      } else {
+        this.setState({
+          email: "",
+          password: "",
+        });
+        this.props.authenticate();
+        this.props.history.push('/');
+      }
+    }).catch(err => {
+      console.log(err);
+    });
   };
 
   render() {
@@ -77,6 +93,9 @@ class Login extends Component {
       <div className="login-form-wrapper">
         <div className="login-form-header">
           <p className="">Login</p>
+          <div className="login-form-error">
+            {this.state.missingUser}
+          </div>
         </div>
         <div className="login-form-content">
           <form onSubmit={this.handleSubmit}>

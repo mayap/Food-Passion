@@ -1,0 +1,32 @@
+.add-recipe {
+    margin: 50px 0;
+}
+
+.add-recipe-header {
+    text-align: center;
+}
+
+.add-recipe-form-content {
+    display: flex;
+    flex-flow: column;
+    width: 60%;
+    margin: 10px auto;
+}
+
+.checkbox-wrapper {
+    flex-flow: row;
+    align-items: center;
+}
+
+.checkbox-wrapper input {
+    margin-right: 10px;
+}
+
+.form-control textarea {
+    resize: none;
+    outline: none;
+    padding: 15px;
+    font-size: 14px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+}

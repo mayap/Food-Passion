@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './register.css';
-import axios from 'axios';
-import { Route, Link , withRouter} from 'react-router-dom';
-import $ from 'jquery';
+import { Link } from 'react-router-dom';
 
 class Register extends Component {
   constructor(props) {
@@ -69,53 +67,49 @@ class Register extends Component {
       password: this.state.password
     };
 
-    // axios.defaults.withCredentials = true;
+    let formBody = [];
+    for (let property in user) {
+      let encodedKey = encodeURIComponent(property);
+      let encodedValue = encodeURIComponent(user[property]);
+      formBody.push(encodedKey + "=" + encodedValue);
+    }
+    formBody = formBody.join("&");
 
-    // fetch(`http://localhost:3200/user`, {
-    //   method: 'post',
-    //   headers: {
-    //     "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-    //   },
-    //   body: user
-    // }).then(res => {
-    //   debugger;
-    // });
-    //
-    // $.ajax({
-    //   url: 'http://localhost:3200/user',
-    //   dataType: 'json',
-    //   cache: false,
-    //   success: function(data) {
-    //     debugger;
-    //     // this.setState({data: data}); // Notice this
-    //   }.bind(this),
-    //   error: function(xhr, status, err) {
-    //     debugger;
-    //     // console.error(this.props.url, status, err.toString());
-    //   }.bind(this)
-    // });
-
-    // axios.post(`http://127.0.0.1:3200/user`, user)
-    //   .then(res => {
-    //     this.setState({
-    //       firstName: "",
-    //       lastName: "",
-    //       email: "",
-    //       password: "",
-    //       result: {
-    //         state: true,
-    //         text: 'Successful registration!'
-    //       }
-    //     });
-    //   })
-    //   .catch(err => {
-    //     this.setState({
-    //       result: {
-    //         state: false,
-    //         text: [err.response.data]
-    //       }
-    //     });
-    //   })
+    fetch(`http://localhost:3200/user`, {
+      method: 'post',
+      headers: {
+        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+      },
+      body: formBody,
+      credentials: 'include'
+    }).then(res => {
+      if (res.status === 200) {
+        this.setState({
+          firstName: "",
+          lastName: "",
+          email: "",
+          password: "",
+          result: {
+            state: true,
+            text: 'Successful registration!'
+          }
+        });
+      } else if (res.status === 400) {
+        this.setState({
+          result: {
+            state: false,
+            text: 'User with this e-mail address already exists!'
+          }
+        });
+      }
+    }).catch(err => {
+      this.setState({
+        result: {
+          state: false,
+          text: [err.response.data]
+        }
+      });
+    });
   };
 
   render() {
@@ -178,16 +172,15 @@ class Register extends Component {
     }
 
     return (
-
-    <div className="reg-form-wrapper">
-      <div className="reg-form-header">
-        <p className="">Registration</p>
-        <p className={this.state.result.state ? 'result-success' : 'result-failure'}>{this.state.result.text}</p>
+      <div className="reg-form-wrapper">
+        <div className="reg-form-header">
+          <p className="">Registration</p>
+          <p className={this.state.result.state ? 'result-success' : 'result-failure'}>{this.state.result.text}</p>
+        </div>
+        <div className="reg-form-content">
+          {partialContent}
+        </div>
       </div>
-      <div className="reg-form-content">
-        {partialContent}
-      </div>
-    </div>
     );
   }
 }

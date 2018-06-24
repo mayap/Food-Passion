@@ -12,12 +12,10 @@ class Base extends Component {
     this.getAllRecipes = this.getAllRecipes.bind(this);
 
     this.getAllRecipes().then(res => {
-      debugger;
       this.setState({
         recipes: JSON.parse(res.data.rows)
       });
     }, err => {
-      debugger;
       this.setState({
         error: err.response.data
       });
@@ -27,7 +25,7 @@ class Base extends Component {
   getAllRecipes() {
     let url = `http://localhost:3200/recipes`;
 
-    return axios.get(url);
+    return axios.get(url, {withCredentials: true});
   }
 
   render() {

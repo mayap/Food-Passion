@@ -15,6 +15,7 @@
 
 .single-recipe-wrapper {
   width: 250px;
+  max-height: 282px;
   margin: 10px 20px;
   text-align: left;
 
