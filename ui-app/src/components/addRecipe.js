@@ -109,15 +109,15 @@ debugger;
                      className="input-field"
                      placeholder="Preparation time in minutes" />
             </div>
-            <div className="form-control">
-              <label htmlFor="email">Upload image:</label>
+            {/*<div className="form-control">*/}
+              {/*<label htmlFor="email">Upload image:</label>*/}
               {/*<input id="email"*/}
               {/*type="email"*/}
               {/*value={this.state.email}*/}
               {/*onChange={this.handleChange}*/}
               {/*className="input-field"*/}
               {/*placeholder="Enter your e-mail address" />*/}
-            </div>
+            {/*</div>*/}
             <div className="form-control">
               <label htmlFor="calories">Calories:</label>
               <input id="calories"
