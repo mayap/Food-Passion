@@ -17,7 +17,7 @@ class Base extends Component {
       });
     }, err => {
       this.setState({
-        error: err.response.data
+        error: err.response ? err.response.data : err.message
       });
     });
   }
